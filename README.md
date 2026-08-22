@@ -55,7 +55,7 @@ Github_Action_Pipeline/
 │
 └── README.md                      # This file
 ```
-![Terraform Workflow for Github Action](../Snaps/Code_Github_Action_infra_creation_using_Terraform_command_automation.png)
+![Terraform Workflow](./Snaps/Code_Github_Action_infra_creation_using_Terraform_command_automation.png)
 
 ## 🧱 Terraform Code (Simple + Hindi Comments)
 ### 1. provider.tf
@@ -185,7 +185,7 @@ Step 7: Apply (Create Resource Group)
 Bashterraform apply
 Type yes when asked.
 
-![Terraform Workflow for Github Action](../Snaps/Github_Action_infra_creation_using_Terraform_command_automation.png)
+![Terraform Workflow](./Snaps/Github_Action_infra_creation_using_Terraform_command_automation.png)
 
 ### 🚀 Real Output Example
 BashTerraform will perform the following actions:
