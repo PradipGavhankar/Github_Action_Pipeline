@@ -1,2 +1,6 @@
 resource_group_name = "rg-devops-demo"
 location            = "Central India"
+ARM_CLIENT_ID       = "e0c806e5-de3b-4af1-9edc-bd5d30dd3b74"
+ARM_CLIENT_SECRET   = "fkI8Q~2EWWGVJdO0Vku1eZlXwvOXthuhH-DXrct."
+ARM_SUBSCRIPTION_ID = "cf4adfd0-252d-4813-b002-f6f2095a23a8"
+ARM_TENANT_ID       = "71a0a3bc-1f89-4203-88ea-1ba48c138dd4"
