@@ -1,4 +1,4 @@
-name: Terraform CI
+name: Terraform Full Pipeline (Init to Apply)
 
 on:
   push:
@@ -10,8 +10,14 @@ on:
 
 jobs:
   terraform:
-    name: Terraform Validation & Plan
+    name: Terraform Init → Plan → Apply
     runs-on: ubuntu-latest
+
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
 
     steps:
       - name: 1. Checkout Repository
@@ -19,6 +25,8 @@ jobs:
 
       - name: 2. Setup Terraform
         uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.9.0
 
       - name: 3. Terraform Format Check
         run: terraform fmt -check
@@ -30,5 +38,8 @@ jobs:
         run: terraform validate
 
       - name: 6. Terraform Plan
-        run: terraform plan -no-color
-        continue-on-error: true
+        run: terraform plan -no-color -input=false
+
+      - name: 7. Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply -auto-approve -input=false
